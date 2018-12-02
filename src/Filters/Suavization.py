@@ -5,7 +5,7 @@ FUNCTIONS MODULE
 import numpy
 import math
 
-class SuavizationFilters:
+class SuavizationFilter:
     """Filter class. Implements suavization filters"""
 
     # Weights for each parameter. Define a different weight vector
@@ -70,7 +70,16 @@ class SuavizationFilters:
         
 
     def set_weights(self, weights):
-        """Set the weights vector"""
+        """
+        Set the weights vector.
+
+        This method is build to allow chain implementation, such as:
+
+        filter = SuavizationFilter()
+        weights = [...]
+        result = filter.set_weights(weights).mean(pixels)
+        
+        """
 
         self.weights = weights
         return self
