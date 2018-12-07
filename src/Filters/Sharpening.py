@@ -3,7 +3,7 @@ Sharpening filters (agucamento)
 """
 
 
-class SharpeningFilters:
+class SharpeningFilter:
     
      def __init_(self):
          pass
