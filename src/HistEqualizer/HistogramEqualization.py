@@ -60,7 +60,7 @@ class HistogramEqualization:
             frequency_eq[pixel] += 1/(width*height)
         
         # Print histogram of equalized image
-        fig_name = self.imgName + "_eq_hist"
+        fig_name = self.imgName + "_hist_eq"
         self.printHistogram(frequency_eq,fig_name)
         
         result = numpy.array(eq_img).reshape((height, width, 1))
