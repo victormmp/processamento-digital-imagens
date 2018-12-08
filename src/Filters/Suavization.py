@@ -97,16 +97,25 @@ class SuavizationFilter:
 
     def gaussian_func(self, pixels):
 
+        if len(pixels) < self.mask**2:
+            pixels_list = list(pixels)
+            num_zeros = self.mask**2 - len(pixels)
+            pixels_list += [0] * num_zeros
+            pixels = numpy.array(pixels_list)
+
         # Number of pixels on each side n x n
         side = int(numpy.sqrt(pixels.shape))
 
         distances = self.build_distance_matrix(side)        
         variance = numpy.var(pixels)
 
-        gaussian_matrix = [1 / (2 * math.pi * variance) * math.pow(math.e, (distance / (2 * variance))) 
-                           for distance in distances]
+        if (variance != 0):
+            gaussian_matrix = [ math.pow(math.e, -(distance / (2 * variance))) 
+                            for distance in distances]
+        else:
+            gaussian_matrix = [1 for distance in distances]
 
-        return int(numpy.mean(gaussian_matrix))
+        return int(numpy.mean([h * pixel for h, pixel in zip(gaussian_matrix, pixels)]))
 
 
     @staticmethod
