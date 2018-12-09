@@ -2,6 +2,7 @@ import sys
 from PIL import Image
 from src.Filters.Suavization import *
 from src.HistEqualizer.HistogramEqualization import *
+from src.Filters.Sharpening import *
 import numpy as np
 
 # sys.path.insert(0, r'./')
@@ -98,4 +99,9 @@ newImage = Image.fromarray(img_out.astype('uint8').reshape((height2, width2)), '
 newImageName = path_out_imgs + "IMG2/" + 'IMG2_hist_eq_out.png'
 newImage.save(newImageName)
 
-print("Fim")
+# Filtragem com filtro laplace mascara 3
+print('Filtragem com filtro laplace mascara 3')
+laplace_out = SharpeningFilter(img).evaluate()
+newImage = Image.fromarray(laplace_out.astype('uint8').reshape((height, width)), 'L')
+newImageName = 'IMG1/' + 'IMG1_laplace_3_out.png'
+newImage.save(newImageName)
