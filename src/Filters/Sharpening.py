@@ -64,6 +64,7 @@ class SharpeningFilter:
         # Build position mapper for each pixel
         laplace_matrix = [c * 1 for _ in range(side**2)]
 
-        laplace_matrix[(mean_position+1)*side- mean_position - 1] = - c * (side*side)
+        # This implementation already sum the f(x,y) to recover the original image
+        laplace_matrix[(mean_position+1)*side- mean_position - 1] = - c * (side*side - 1 - c)
 
         return laplace_matrix
