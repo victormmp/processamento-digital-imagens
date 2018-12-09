@@ -172,4 +172,3 @@ newImageName = path_out_imgs + "IMG2/" + 'IMG2_hist_eq_out.png'
 newImage.save(newImageName)
 
 print("Fim")
->>>>>>> rankfilter
