@@ -114,8 +114,8 @@ newImageName = path_out_imgs + 'IMG1/' + 'IMG1_laplace_3_out.png'
 newImage.save(newImageName)
 
 # Filtragem com filtro laplace mascara 3
-# print('Filtragem com filtro laplace mascara 3 IMG2')
-# laplace_out = SharpeningFilter(img2).evaluate()
-# newImage = Image.fromarray(laplace_out.astype('uint8').reshape((height2, width2)), 'L')
-# newImageName = path_out_imgs + 'IMG2/' + 'IMG2_laplace_3_out.png'
-# newImage.save(newImageName)
+print('Filtragem com filtro laplace mascara 3 IMG2')
+laplace_out = SharpeningFilter(img2).evaluate()
+newImage = Image.fromarray(laplace_out.astype('uint8').reshape((height2, width2)), 'L')
+newImageName = path_out_imgs + 'IMG2/' + 'IMG2_laplace_3_out.png'
+newImage.save(newImageName)

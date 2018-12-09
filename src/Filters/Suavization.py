@@ -23,11 +23,13 @@ class SuavizationFilter:
         """
         Set the weights vector.
 
-        This method is build to allow chain implementation, such as:
+        This method was built to allow chain implementation, such as:
 
         filter = SuavizationFilter()
         weights = [...]
         result = filter.set_weights(weights).mean(pixels)
+
+        Because return self resturns this class instance.
         
         """
 
@@ -35,6 +37,13 @@ class SuavizationFilter:
         return self
 
     def evaluate(self):
+        """
+
+        Apply the selectef filter function of self.func to all image.
+        This method iterates all pixels and mount the respective mask with the mask size from
+        self.mask.
+
+        """
 
         # Assert pixels is a matrix
         assert(type(self.pixels) == numpy.ndarray)
@@ -43,7 +52,6 @@ class SuavizationFilter:
         assert(self.mask % 2 != 0)
 
         margin_size = self.mask // 2
-        median = (self.mask // 2 + 1)
 
         n_line, n_column, _ = self.pixels.shape
 

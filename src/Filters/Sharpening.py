@@ -20,7 +20,6 @@ class SharpeningFilter:
         assert(self.mask % 2 != 0)
 
         margin_size = self.mask // 2
-        median = (self.mask // 2 + 1)
 
         n_line, n_column, _ = self.pixels.shape
 
