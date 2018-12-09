@@ -50,7 +50,12 @@ class SharpeningFilter:
 
         laplace_mask = self.build_laplace_mask(side)
 
-        return int(sum([pixel *multiplier for pixel, multiplier in zip(pixels, laplace_mask)]))
+        new_value = int(sum([pixel *multiplier for pixel, multiplier in zip(pixels, laplace_mask)]))
+
+        new_value = 255 if new_value > 255 else new_value
+        new_value = 0 if new_value < 0 else new_value
+
+        return new_value
     
 
     @staticmethod

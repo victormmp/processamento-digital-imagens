@@ -39,7 +39,7 @@ class SuavizationFilter:
     def evaluate(self):
         """
 
-        Apply the selectef filter function of self.func to all image.
+        Apply the selected filter function of self.func to all image.
         This method iterates all pixels and mount the respective mask with the mask size from
         self.mask.
 
