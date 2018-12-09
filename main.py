@@ -1,6 +1,7 @@
 import sys
 from PIL import Image
 from src.Filters.Suavization import *
+from src.Filters.RankFilter import *
 from src.HistEqualizer.HistogramEqualization import *
 import numpy as np
 
@@ -9,6 +10,7 @@ import numpy as np
 print("Iniciando Script")
 
 new_filter = SuavizationFilter()
+rank_filter = RankFilter()
 
 path_out_imgs = "./out_imgs/"
 
@@ -78,6 +80,62 @@ print("Filtragem com filtro gaussiano mascara 5 - IMG2")
 gauss_out = new_filter.gaussian(img2, mask=5).evaluate()
 newImage = Image.fromarray(gauss_out.astype('uint8').reshape((height2, width2)), 'L')
 newImageName = path_out_imgs + "IMG2/" + 'IMG2_gauss_5_out.png'
+newImage.save(newImageName)
+
+# Filtragem com filtro mediana mascara 3 - IMG1
+print("Filtragem com filtro mediana mascara 3 - IMG1")
+mean_out = rank_filter.median(img, mask=3).evaluate()
+newImage = Image.fromarray(mean_out.astype('uint8').reshape((height, width)), 'L')
+newImageName = path_out_imgs + "IMG1/" + 'IMG1_median_3_out.png'
+newImage.save(newImageName)
+
+# Filtragem com filtro mediana mascara 3 - IMG2
+print("Filtragem com filtro mediana mascara 3 - IMG2")
+mean_out = rank_filter.median(img2, mask=3).evaluate()
+newImage = Image.fromarray(mean_out.astype('uint8').reshape((height2, width2)), 'L')
+newImageName = path_out_imgs + "IMG2/" + 'IMG2_median_3_out.png'
+newImage.save(newImageName)
+
+# Filtragem com filtro mediana mascara 5 - IMG1
+print("Filtragem com filtro mediana mascara 5 - IMG1")
+mean_out = rank_filter.median(img, mask=5).evaluate()
+newImage = Image.fromarray(mean_out.astype('uint8').reshape((height, width)), 'L')
+newImageName = path_out_imgs + "IMG1/" + 'IMG1_median_5_out.png'
+newImage.save(newImageName)
+
+# Filtragem com filtro mediana mascara 5 - IMG2
+print("Filtragem com filtro mediana mascara 5 - IMG2")
+mean_out = rank_filter.median(img2, mask=5).evaluate()
+newImage = Image.fromarray(mean_out.astype('uint8').reshape((height2, width2)), 'L')
+newImageName = path_out_imgs + "IMG2/" + 'IMG2_median_5_out.png'
+newImage.save(newImageName)
+
+# Filtragem com filtro de máximo mascara 3 - IMG1
+print("Filtragem com filtro de maximo mascara 3 - IMG1")
+mean_out = rank_filter.maximum(img, mask=3).evaluate()
+newImage = Image.fromarray(mean_out.astype('uint8').reshape((height, width)), 'L')
+newImageName = path_out_imgs + "IMG1/" + 'IMG1_max_3_out.png'
+newImage.save(newImageName)
+
+# Filtragem com filtro máximo mascara 3 - IMG2
+print("Filtragem com filtro de maximo mascara 3 - IMG2")
+mean_out = rank_filter.maximum(img2, mask=3).evaluate()
+newImage = Image.fromarray(mean_out.astype('uint8').reshape((height2, width2)), 'L')
+newImageName = path_out_imgs + "IMG2/" + 'IMG2_max_3_out.png'
+newImage.save(newImageName)
+
+# Filtragem com filtro de máximo mascara 5 - IMG1
+print("Filtragem com filtro de maximo mascara 5 - IMG1")
+mean_out = rank_filter.maximum(img, mask=5).evaluate()
+newImage = Image.fromarray(mean_out.astype('uint8').reshape((height, width)), 'L')
+newImageName = path_out_imgs + "IMG1/" + 'IMG1_max_5_out.png'
+newImage.save(newImageName)
+
+# Filtragem com filtro máximo mascara 5 - IMG2
+print("Filtragem com filtro de maximo mascara 5 - IMG2")
+mean_out = rank_filter.maximum(img2, mask=5).evaluate()
+newImage = Image.fromarray(mean_out.astype('uint8').reshape((height2, width2)), 'L')
+newImageName = path_out_imgs + "IMG2/" + 'IMG2_max_5_out.png'
 newImage.save(newImageName)
 
 #Equalização de Histograma - IMG1
